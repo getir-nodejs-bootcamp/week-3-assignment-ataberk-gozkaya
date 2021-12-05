@@ -65,7 +65,7 @@ app.post("/user", async (req, res) => {
 });
 //get user with respect to id
 app.get("/user/:id", async (req, res) => {
-    const id = req.params.id * 1;
+    const id = req.params.id * 1; //this is for making id a number
     const user = users.find((el) => el.id === id);
 
     if (!verifyToken(token)) {
@@ -100,7 +100,7 @@ app.get("/user/:id", async (req, res) => {
 });
 //find index with respect to id and change that object
 app.put("/user/:id", async (req, res) => {
-    const id = req.params.id * 1;
+    const id = req.params.id * 1;//this is for making id a number
 
     if (!verifyToken(token)) {
         res.statusCode = 401;
@@ -145,7 +145,7 @@ app.put("/user/:id", async (req, res) => {
 });
 //find index by using id and patch some properties
 app.patch("/user/:id", async (req, res) => {
-    const id = req.params.id * 1;
+    const id = req.params.id * 1; //this is for making id a number
 
     if (!verifyToken(token)) {
         res.statusCode = 401;
@@ -182,7 +182,7 @@ app.patch("/user/:id", async (req, res) => {
 });
 //obviously will delete item according to id
 app.delete("/user/:id", async (req, res) => {
-    const id = req.params.id * 1;
+    const id = req.params.id * 1; //this is for making id a number
     let index = users.findIndex((e) => e.id === id);
 
     if (!verifyToken(token)) {
@@ -214,7 +214,7 @@ app.delete("/user/:id", async (req, res) => {
         logFile,
         `Status: ${res.statusCode} ${req.url} on ${new Date().toISOString()}\n`
     );
-    res.send("deleted");
+    res.send("user deleted");
 });
 
 app.listen(port, () => {
