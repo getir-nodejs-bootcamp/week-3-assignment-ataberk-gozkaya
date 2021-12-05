@@ -24,7 +24,7 @@ var token = "";
 //this is just a simulation for creating token
 app.post("/login", async (req, res) => {
     console.log("token assigned");
-    token = await jwt.sign({ id: 5 }, SECRET);
+    token = await jwt.sign({ id: 3 }, SECRET);
 
     res.send(token);
 });
@@ -81,7 +81,7 @@ app.get("/user/:id", async (req, res) => {
     }
     if (!user) {
         res.statusCode = 400;
-        res.send("there is no one with that id");
+        res.send("no one with that id");
         await writeLogData(
             logFile,
             `Status: ${res.statusCode} ${
@@ -122,7 +122,7 @@ app.put("/user/:id", async (req, res) => {
                 req.url
             } on ${new Date().toISOString()}\n`
         );
-        res.send("id is wrong");
+        res.send("wrong id");
         return;
     }
     if (!checkValid(req.body, res)) {
@@ -168,7 +168,7 @@ app.patch("/user/:id", async (req, res) => {
                 req.url
             } on ${new Date().toISOString()}\n`
         );
-        res.send("id is wrong");
+        res.send("wrong id");
         return;
     }
 
